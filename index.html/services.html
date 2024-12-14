@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Services - Your Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0e0e0e, #1b1b1b), url('https://www.transparenttextures.com/patterns/tech-pattern.png');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+            perspective: 1000px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #00ff99, #0099cc);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 4em;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 255, 0.3); /* Glowing effect */
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.4em;
+            font-style: italic;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        nav {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #00ff99;
+            transform: scale(1.1) rotateY(10deg); /* 3D hover effect */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Glowing effect */
+        }
+
+        /* Search Bar Styling */
+        .search-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(40, 40, 40, 0.9);
+            border-radius: 5px;
+            padding: 5px 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-bar input[type="text"] {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1em;
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+            border-radius: 5px;
+            transition: border 0.3s ease;
+        }
+
+        .search-bar input[type="text"]:focus {
+            outline: none;
+            border: 2px solid #00ff99;
+        }
+
+        .search-bar button {
+            background-color: #0099cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #00ff99;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card h3 {
+            color: #00ff99;
+            margin: 15px 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card p {
+            color: #ddd;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        .service-card .price {
+            font-size: 1.5em;
+            color: #00ff99;
+            margin: 15px 0;
+        }
+
+        .payment-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .payment-button button {
+            background-color: #00ff99;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .payment-button button:hover {
+            background-color: #0099cc;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+        }
+
+        .qr-code {
+            display: block;
+            margin: 15px auto 0;
+            width: 150px;
+            height: auto;
+            border: 5px solid #00ff99;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our Services</h1>
+        <p>Explore the range of services I offer(SCROLL DOWN TO PAY YOUR ORDERS)</p>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button onclick="searchPage()">Search</button>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="resume.html">Resume</a>
+        <a href="app-development.html">App Development</a>
+    </nav>
+
+    <div class="container">
+        <section class="services">
+            <div class="service-card">
+                <h3>Web Development</h3>
+                <p>Create stunning, responsive websites tailored to your needs.</p>
+                <div class="price">$500 - $2000</div>
+            </div>
+            <div class="service-card">
+                <h3>Graphic Design</h3>
+                <p>Custom graphics and visuals to bring your ideas to life.</p>
+                <div class="price">$200 - $1000</div>
+            </div>
+            <div class="service-card">
+                <h3>Game Development</h3>
+                <p>Engaging and innovative game design and development.</p>
+                <div class="price">$1000 - $5000</div>
+            </div>
+            <div class="service-card">
+                <h3>SEO Optimization</h3>
+                <p>Boost your website's visibility with expert SEO services.</p>
+                <div class="price">$300 - $1500</div>
+            </div>
+            <div class="service-card">
+                <h3>App Development</h3>
+                <p>Build powerful, user-friendly mobile and web applications.</p>
+                <div class="price">$800 - $4000</div>
+            </div>
+            <div class="service-card">
+                <h3>Content Creation</h3>
+                <p>Professional content to grow your brand or project.</p>
+                <div class="price">$100 - $2000</div>
+            </div>
+        </section>
+
+        <section class="payment-button">
+            <h2>Ready to Get Started?</h2>
+            <p>Click below to make a payment and start your project with us!</p>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="YOUR_PAYPAL_BUTTON_ID">
+                <button type="submit">Pay Now (PayPal)</button>
+                <img class="qr-code" src="images/qrcode.svg" alt="QR Code for PayPal">
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ghliden.gg. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function searchPage() {
+            const input = document.getElementById('search-input').value;
+            if(input) {
+                alert('Searching for: ' + input);
+                // Implement the actual search functionality or redirection
+            }
+        }
+    </script>
+</body>
+</html>

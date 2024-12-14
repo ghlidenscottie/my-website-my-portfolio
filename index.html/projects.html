@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Projects - Your Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0e0e0e, #1b1b1b), url('https://www.transparenttextures.com/patterns/tech-pattern.png');
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            perspective: 1000px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 4px solid #00ff99;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
+            transform-style: preserve-3d;
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+            color: #00ff99;
+        }
+
+        nav {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #00ff99;
+            transform: scale(1.1) rotateY(10deg);
+        }
+
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .project {
+            width: 30%;
+            margin: 15px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .project img {
+            max-width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .project h3 {
+            color: #00ff99;
+            font-size: 1.5em;
+            margin-top: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .project p {
+            color: #ddd;
+            font-size: 1em;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .add-to-cart {
+            display: block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #00ff99;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #0099cc;
+            transform: scale(1.05);
+        }
+
+        .cart-container {
+            position: fixed;
+            top: 5%; /* Adjusted position slightly higher */
+            right: 10px;
+            width: 180px; /* Reduced width */
+            height: 25%;  /* Reduced height */
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+            display: none;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .cart-container h3 {
+            font-size: 1em;
+            margin-top: 0;
+            color: #00ff99;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .cart-item p {
+            font-size: 0.9em;
+            margin: 0;
+            color: #ddd;
+        }
+
+        .checkout-button {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            text-align: center;
+            width: 100%;
+        }
+
+        .checkout-button:hover {
+            background-color: #45a049;
+        }
+
+        .cart-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #00ff99;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        .cart-button:hover {
+            background-color: #0099cc;
+        }
+
+        .close-cart {
+            color: red;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+        .close-cart:hover {
+            color: darkred;
+        }
+    </style>
+    <script>
+        let cartItems = [];
+
+        function addToCart(button, title, image, description) {
+            cartItems.push({ title, image, description });
+            updateCart();
+            button.innerHTML = 'Added to Cart';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = 'Add to Cart';
+                button.disabled = false;
+            }, 1000);
+
+            redirectToCart();
+        }
+
+        function updateCart() {
+            const cartContainer = document.getElementById('cartItems');
+            cartContainer.innerHTML = '';
+
+            cartItems.forEach((item, index) => {
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.title}">
+                        <p>${item.title}</p>
+                    </div>`;
+            });
+        }
+
+        function redirectToCart() {
+            document.querySelector('.cart-container').style.display = 'block';
+        }
+
+        function closeCart() {
+            document.querySelector('.cart-container').style.display = 'none';
+        }
+
+        function proceedToCheckout() {
+            window.location.href = 'services.html'; // Redirect to Services page
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>My Projects</h1>
+        <p>Explore my creative work!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="resume.html">Resume</a>
+        <a href="app-development.html">App Development</a>
+    </nav>
+
+    <div class="container">
+        <section class="projects">
+            <!-- Project 1 -->
+            <div class="project">
+                <img src="images/awesome-3d-websites.jpg" alt="Project 1">
+                <h3>Interactive 3D Website</h3>
+                <p>Built with Three.js for dynamic experiences.</p>
+                <button class="add-to-cart" onclick="addToCart(this, 'Interactive 3D Website', 'images/awesome-3d-websites.jpg', 'An interactive 3D website with WebGL.')">Add to Cart</button>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project">
+                <img src="images/awesome-3d-websites.jpg" alt="Project 2">
+                <h3>Modern E-commerce Platform</h3>
+                <p>A responsive e-commerce site using React and Node.js.</p>
+                <button class="add-to-cart" onclick="addToCart(this, 'Modern E-commerce Platform', 'images/ecommerce-platform.jpg', 'A responsive e-commerce site.')">Add to Cart</button>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project">
+                <img src="images/awesome-3d-websites.jpg" alt="Project 3">
+                <h3>Personal Portfolio Website</h3>
+                <p>A sleek portfolio designed with HTML, CSS, and JavaScript.</p>
+                <button class="add-to-cart" onclick="addToCart(this, 'Personal Portfolio Website', 'images/portfolio-website.jpg', 'A sleek portfolio website.')">Add to Cart</button>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project">
+                <img src="images/awesome-3d-websites.jpg" alt="Project 4">
+                <h3>Custom Blog Platform</h3>
+                <p>CMS blog platform built with Django and Bootstrap.</p>
+                <button class="add-to-cart" onclick="addToCart(this, 'Custom Blog Platform', 'images/blog-platform.jpg', 'A CMS blog platform with an intuitive backend.')">Add to Cart</button>
+            </div>
+        </section>
+    </div>
+
+    <button class="cart-button" onclick="redirectToCart()">🛒</button>
+
+    <div class="cart-container">
+        <span class="close-cart" onclick="closeCart()">×</span>
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+</body>
+</html>

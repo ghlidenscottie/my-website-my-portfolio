@@ -1,0 +1,49 @@
+<header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Explore my projects, services, and more.</p>
+</header>
+
+<div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search..." oninput="performSearch()">
+</div>
+
+<div class="typing-board" id="typing-board">
+    <button onclick="addText('services')">services</button>
+    <button onclick="addText('projects')">projects</button>
+    <button onclick="addText('gallery')">gallery</button>
+    <button onclick="addText('contact')">contact</button>
+    <button onclick="addText('resume')">resume</button>
+    <button onclick="addText('app development')">app development</button>
+    <button onclick="addText('payment')">payment</button>
+</div>
+
+<script>
+    function toggleTypingBoard() {
+        const typingBoard = document.getElementById('typing-board');
+        typingBoard.style.display = typingBoard.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function addText(text) {
+        const input = document.getElementById('search-input');
+        input.value = text;
+        performSearch();
+    }
+
+    function performSearch() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+
+        const pages = {
+            'services': 'services.html',
+            'projects': 'projects.html',
+            'gallery': 'gallery.html',
+            'contact': 'contact.html',
+            'resume': 'resume.html',
+            'app development': 'app-development.html',
+            'payment': 'payment.html'
+        };
+
+        if (pages[input]) {
+            window.location.href = pages[input];
+        }
+    }
+</script>

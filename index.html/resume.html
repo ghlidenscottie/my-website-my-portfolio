@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Resume - Your Portfolio</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #1a1a1a, #3b3b3b);
+            color: #fff;
+        }
+
+        /* Header section */
+        header {
+            background: linear-gradient(135deg, #3F51B5, #1a237e);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+            opacity: 0.2;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #e8e8e8;
+        }
+
+        /* Navigation bar */
+        nav {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #4CAF50;
+        }
+
+        /* Main container */
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* Section cards */
+        .resume, .upload-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .resume h2, .upload-form h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+            color: #3F51B5;
+        }
+
+        .resume p, .upload-form p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .resume img {
+            width: 150px;
+            margin: 20px 0;
+        }
+
+        /* Buttons */
+        a.download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3F51B5, #5C6BC0);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        a.download-btn:hover {
+            background-color: #4CAF50;
+            transform: translateY(-3px);
+        }
+
+        button.upload-btn {
+            background: linear-gradient(135deg, #3F51B5, #5C6BC0);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button.upload-btn:hover {
+            background-color: #4CAF50;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #333, #555);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Mobile responsive */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            nav a {
+                font-size: 1em;
+                margin: 0 8px;
+            }
+
+            .resume h2, .upload-form h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resume</h1>
+        <p>Download or upload your resume</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="resume.html">Resume</a>
+        <a href="app-development.html">App Development</a>
+    </nav>
+
+    <div class="container">
+        <!-- Section for downloading the resume -->
+        <section class="resume">
+            <h2>Download Resume</h2>
+            <p>You can download my resume in PDF format below:</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Download Icon">
+            <a href="Serrano-Ghriczy Yannah Manuscript Final 27 (1).pdf" class="download-btn" download>Download My Resume</a>
+        </section>
+
+        <!-- Section for uploading a file -->
+        <section class="upload-form">
+            <h2>Upload Your Resume</h2>
+            <p>Want to upload your updated resume? Use the form below:</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/2936/2936704.png" alt="Upload Icon">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" id="file-upload" name="resume" accept=".pdf,.doc,.docx"><br><br>
+                <button type="submit" class="upload-btn">Upload File</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ghliden.gg. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
